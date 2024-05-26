@@ -1,14 +1,1 @@
-{
-  "users": [
-    {
-      "id": "4a2eccf0-b903-47b8-94aa-8a8c8008927f",
-      "name": "Juniel Filappe",
-      "email": "junirel@teste.com"
-    },
-    {
-      "id": "595bba0e-36e1-4a14-8c56-18e25e52d6ce",
-      "name": "Juniel Filappe",
-      "email": "junirel@teste.com"
-    }
-  ]
-}
+{"users":[{"id":"a8064ddc-194e-4e10-8e72-86ebe52d0b3d","name":"Juniel Filappi","email":"juniel@teste.com"},{"id":"9c45a380-7b58-4bae-a8b4-16a263663bec","name":"Juniel Filappe","email":"junirel@teste.com"}]}
