@@ -52,7 +52,7 @@ import { AnswerAttachmentsRepository } from "@/domain/forum/application/reposito
     QuestionAttachmentsRepository,
     AnswersRepository,
     AnswerCommentsRepository,
-    QuestionAttachmentsRepository,
+    AnswerAttachmentsRepository,
   ],
 })
 export class DatabaseModule {}
