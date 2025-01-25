@@ -5,7 +5,6 @@ import {
 } from '@/domain/forum/enterprise/entities/question-attachment'
 import { Injectable } from '@nestjs/common'
 import { PrismaService } from '@/infra/database/prisma/prisma.service'
-import { PrismaAttachmentMapper } from '@/infra/database/prisma/mappers/prisma-attachment-mapper'
 
 export function makeQuestionAttachment(
   override: Partial<QuestionAttachmentProps> = {},
