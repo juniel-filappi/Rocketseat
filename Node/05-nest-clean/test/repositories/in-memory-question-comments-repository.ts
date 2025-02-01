@@ -42,7 +42,9 @@ export class InMemoryQuestionCommentsRepository
         )
 
         if (!author) {
-          throw new Error(`Author with ID "${item.authorId.toString()}" not found`)
+          throw new Error(
+            `Author with ID "${item.authorId.toString()}" not found`,
+          )
         }
 
         return CommentWithAuthor.create({
