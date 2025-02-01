@@ -2,9 +2,9 @@ import { INestApplication } from '@nestjs/common'
 import { AppModule } from '@/infra/app.module'
 import { Test } from '@nestjs/testing'
 import request from 'supertest'
-import { StudentFactory } from "../../../../test/factories/make-student";
-import { DatabaseModule } from "@/infra/database/database.module";
-import { hash } from "bcryptjs";
+import { StudentFactory } from '../../../../test/factories/make-student'
+import { DatabaseModule } from '@/infra/database/database.module'
+import { hash } from 'bcryptjs'
 
 describe('Authenticate (E2E)', () => {
   let app: INestApplication

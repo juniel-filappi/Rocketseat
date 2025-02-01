@@ -3,11 +3,11 @@ import { AppModule } from '@/infra/app.module'
 import { Test } from '@nestjs/testing'
 import request from 'supertest'
 import { JwtService } from '@nestjs/jwt'
-import { StudentFactory } from "../../../../test/factories/make-student";
-import { DatabaseModule } from "@/infra/database/database.module";
-import { PrismaService } from "@/infra/database/prisma/prisma.service";
-import { QuestionFactory } from "../../../../test/factories/make-question";
-import { QuestionCommentFactory } from "../../../../test/factories/make-question-comment";
+import { StudentFactory } from '../../../../test/factories/make-student'
+import { DatabaseModule } from '@/infra/database/database.module'
+import { PrismaService } from '@/infra/database/prisma/prisma.service'
+import { QuestionFactory } from '../../../../test/factories/make-question'
+import { QuestionCommentFactory } from '../../../../test/factories/make-question-comment'
 
 describe('Delete question comment (E2E)', () => {
   let app: INestApplication
@@ -20,7 +20,7 @@ describe('Delete question comment (E2E)', () => {
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule, DatabaseModule],
-      providers: [StudentFactory, QuestionCommentFactory, QuestionFactory]
+      providers: [StudentFactory, QuestionCommentFactory, QuestionFactory],
     }).compile()
 
     app = moduleRef.createNestApplication()
@@ -44,10 +44,11 @@ describe('Delete question comment (E2E)', () => {
       authorId: user.id,
     })
 
-    const questionComment = await questionCommentFactory.makePrismaQuestionComment({
-      authorId: user.id,
-      questionId: question.id,
-    })
+    const questionComment =
+      await questionCommentFactory.makePrismaQuestionComment({
+        authorId: user.id,
+        questionId: question.id,
+      })
 
     const questionCommentId = questionComment.id.toString()
 
@@ -58,7 +59,7 @@ describe('Delete question comment (E2E)', () => {
 
     expect(response.statusCode).toBe(204)
 
-    const commentOnDatabase = await prisma.comment.findUnique( {
+    const commentOnDatabase = await prisma.comment.findUnique({
       where: {
         id: questionCommentId,
       },

@@ -3,11 +3,11 @@ import { AppModule } from '@/infra/app.module'
 import { Test } from '@nestjs/testing'
 import request from 'supertest'
 import { JwtService } from '@nestjs/jwt'
-import { StudentFactory } from "../../../../test/factories/make-student";
-import { DatabaseModule } from "@/infra/database/database.module";
-import { PrismaService } from "@/infra/database/prisma/prisma.service";
-import { QuestionFactory } from "../../../../test/factories/make-question";
-import { AnswerFactory } from "../../../../test/factories/make-answer";
+import { StudentFactory } from '../../../../test/factories/make-student'
+import { DatabaseModule } from '@/infra/database/database.module'
+import { PrismaService } from '@/infra/database/prisma/prisma.service'
+import { QuestionFactory } from '../../../../test/factories/make-question'
+import { AnswerFactory } from '../../../../test/factories/make-answer'
 
 describe('Comment on question (E2E)', () => {
   let app: INestApplication
@@ -20,7 +20,7 @@ describe('Comment on question (E2E)', () => {
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule, DatabaseModule],
-      providers: [StudentFactory, QuestionFactory, AnswerFactory]
+      providers: [StudentFactory, QuestionFactory, AnswerFactory],
     }).compile()
 
     app = moduleRef.createNestApplication()

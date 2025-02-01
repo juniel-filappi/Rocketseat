@@ -3,11 +3,11 @@ import { AppModule } from '@/infra/app.module'
 import { Test } from '@nestjs/testing'
 import request from 'supertest'
 import { JwtService } from '@nestjs/jwt'
-import { StudentFactory } from "../../../../test/factories/make-student";
-import { DatabaseModule } from "@/infra/database/database.module";
-import { PrismaService } from "@/infra/database/prisma/prisma.service";
-import { QuestionFactory } from "../../../../test/factories/make-question";
-import { AnswerFactory } from "../../../../test/factories/make-answer";
+import { StudentFactory } from '../../../../test/factories/make-student'
+import { DatabaseModule } from '@/infra/database/database.module'
+import { PrismaService } from '@/infra/database/prisma/prisma.service'
+import { QuestionFactory } from '../../../../test/factories/make-question'
+import { AnswerFactory } from '../../../../test/factories/make-answer'
 
 describe('Choose question best answer (E2E)', () => {
   let app: INestApplication
@@ -20,7 +20,7 @@ describe('Choose question best answer (E2E)', () => {
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule, DatabaseModule],
-      providers: [StudentFactory, QuestionFactory, AnswerFactory]
+      providers: [StudentFactory, QuestionFactory, AnswerFactory],
     }).compile()
 
     app = moduleRef.createNestApplication()
@@ -60,7 +60,7 @@ describe('Choose question best answer (E2E)', () => {
 
     const questionOnDatabase = await prisma.question.findUnique({
       where: {
-        id: question.id.toString()
+        id: question.id.toString(),
       },
     })
 

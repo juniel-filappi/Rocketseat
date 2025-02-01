@@ -73,7 +73,10 @@ describe('Fetch Question Comments', () => {
 
     for (let i = 1; i <= 22; i++) {
       await inMemoryQuestionCommentsRepository.create(
-        makeQuestionComment({ questionId: new UniqueEntityID('question-1'), authorId: student.id }),
+        makeQuestionComment({
+          questionId: new UniqueEntityID('question-1'),
+          authorId: student.id,
+        }),
       )
     }
 

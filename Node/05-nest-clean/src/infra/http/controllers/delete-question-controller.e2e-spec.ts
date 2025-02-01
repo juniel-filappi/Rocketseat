@@ -3,10 +3,10 @@ import { AppModule } from '@/infra/app.module'
 import { Test } from '@nestjs/testing'
 import request from 'supertest'
 import { JwtService } from '@nestjs/jwt'
-import { StudentFactory } from "../../../../test/factories/make-student";
-import { DatabaseModule } from "@/infra/database/database.module";
-import { PrismaService } from "@/infra/database/prisma/prisma.service";
-import { QuestionFactory } from "../../../../test/factories/make-question";
+import { StudentFactory } from '../../../../test/factories/make-student'
+import { DatabaseModule } from '@/infra/database/database.module'
+import { PrismaService } from '@/infra/database/prisma/prisma.service'
+import { QuestionFactory } from '../../../../test/factories/make-question'
 
 describe('Delete question (E2E)', () => {
   let app: INestApplication
@@ -18,7 +18,7 @@ describe('Delete question (E2E)', () => {
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule, DatabaseModule],
-      providers: [StudentFactory, QuestionFactory]
+      providers: [StudentFactory, QuestionFactory],
     }).compile()
 
     app = moduleRef.createNestApplication()
@@ -50,7 +50,7 @@ describe('Delete question (E2E)', () => {
 
     expect(response.statusCode).toBe(204)
 
-    const questionOnDatabase = await prisma.question.findUnique( {
+    const questionOnDatabase = await prisma.question.findUnique({
       where: {
         id: questionId,
       },

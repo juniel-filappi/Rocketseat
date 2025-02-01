@@ -3,10 +3,10 @@ import { AppModule } from '@/infra/app.module'
 import { Test } from '@nestjs/testing'
 import request from 'supertest'
 import { JwtService } from '@nestjs/jwt'
-import { StudentFactory } from "../../../../test/factories/make-student";
-import { QuestionFactory } from "../../../../test/factories/make-question";
-import { DatabaseModule } from "@/infra/database/database.module";
-import { AnswerFactory } from "../../../../test/factories/make-answer";
+import { StudentFactory } from '../../../../test/factories/make-student'
+import { QuestionFactory } from '../../../../test/factories/make-question'
+import { DatabaseModule } from '@/infra/database/database.module'
+import { AnswerFactory } from '../../../../test/factories/make-answer'
 
 describe('Fetch question answers (E2E)', () => {
   let app: INestApplication
@@ -18,7 +18,7 @@ describe('Fetch question answers (E2E)', () => {
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule, DatabaseModule],
-      providers: [StudentFactory, QuestionFactory, AnswerFactory]
+      providers: [StudentFactory, QuestionFactory, AnswerFactory],
     }).compile()
 
     app = moduleRef.createNestApplication()
@@ -34,7 +34,7 @@ describe('Fetch question answers (E2E)', () => {
   test('[GET] /questions/:questionId/answers', async () => {
     const user = await studentFactory.makePrismaStudent()
 
-    const accessToken = jwt.sign({sub: user.id.toString()})
+    const accessToken = jwt.sign({ sub: user.id.toString() })
 
     const question = await questionFactory.makePrismaQuestion({
       authorId: user.id,
@@ -46,12 +46,12 @@ describe('Fetch question answers (E2E)', () => {
       await answerFactory.makePrismaAnswer({
         authorId: user.id,
         questionId: question.id,
-        content: 'Answer 01'
+        content: 'Answer 01',
       }),
       await answerFactory.makePrismaAnswer({
         authorId: user.id,
         questionId: question.id,
-        content: 'Answer 02'
+        content: 'Answer 02',
       }),
     ])
 

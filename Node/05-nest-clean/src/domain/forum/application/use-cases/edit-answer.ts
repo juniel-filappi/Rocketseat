@@ -7,7 +7,7 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { AnswerAttachmentList } from '@/domain/forum/enterprise/entities/answer-attachment-list'
 import { AnswerAttachment } from '@/domain/forum/enterprise/entities/answer-attachment'
 import { AnswerAttachmentsRepository } from '@/domain/forum/application/repositories/answer-attachments-repository'
-import { Injectable } from "@nestjs/common";
+import { Injectable } from '@nestjs/common'
 
 interface EditAnswerUseCaseRequest {
   authorId: string

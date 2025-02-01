@@ -13,7 +13,7 @@ export class FakeUploader implements Uploader {
   public uploads: Upload[] = []
 
   async upload({ fileName }: UploadParams): Promise<{ url: string }> {
-    const url = randomUUID();
+    const url = randomUUID()
 
     this.uploads.push({
       fileName,

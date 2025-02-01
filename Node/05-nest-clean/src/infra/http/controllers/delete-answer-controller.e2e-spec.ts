@@ -3,11 +3,11 @@ import { AppModule } from '@/infra/app.module'
 import { Test } from '@nestjs/testing'
 import request from 'supertest'
 import { JwtService } from '@nestjs/jwt'
-import { StudentFactory } from "../../../../test/factories/make-student";
-import { DatabaseModule } from "@/infra/database/database.module";
-import { PrismaService } from "@/infra/database/prisma/prisma.service";
-import { AnswerFactory } from "../../../../test/factories/make-answer";
-import { QuestionFactory } from "../../../../test/factories/make-question";
+import { StudentFactory } from '../../../../test/factories/make-student'
+import { DatabaseModule } from '@/infra/database/database.module'
+import { PrismaService } from '@/infra/database/prisma/prisma.service'
+import { AnswerFactory } from '../../../../test/factories/make-answer'
+import { QuestionFactory } from '../../../../test/factories/make-question'
 
 describe('Delete answer (E2E)', () => {
   let app: INestApplication
@@ -20,7 +20,7 @@ describe('Delete answer (E2E)', () => {
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule, DatabaseModule],
-      providers: [StudentFactory, AnswerFactory, QuestionFactory]
+      providers: [StudentFactory, AnswerFactory, QuestionFactory],
     }).compile()
 
     app = moduleRef.createNestApplication()
@@ -58,7 +58,7 @@ describe('Delete answer (E2E)', () => {
 
     expect(response.statusCode).toBe(204)
 
-    const answerOnDatabase = await prisma.answer.findUnique( {
+    const answerOnDatabase = await prisma.answer.findUnique({
       where: {
         id: answerId,
       },

@@ -1,8 +1,14 @@
-import { BadRequestException, Controller, Get, Param, Query } from '@nestjs/common'
+import {
+  BadRequestException,
+  Controller,
+  Get,
+  Param,
+  Query,
+} from '@nestjs/common'
 import { ZodValidationPipe } from '@/infra/http/pipes/zod-validation-pipe'
 import { z } from 'zod'
-import { FetchQuestionAnswersUseCase } from "@/domain/forum/application/use-cases/fetch-question-answers";
-import { AnswerPresenter } from "@/infra/http/presenters/answer-presenter";
+import { FetchQuestionAnswersUseCase } from '@/domain/forum/application/use-cases/fetch-question-answers'
+import { AnswerPresenter } from '@/infra/http/presenters/answer-presenter'
 
 const pageQueryParamSchema = z
   .string()
@@ -17,13 +23,12 @@ type PageQueryParamSchema = z.infer<typeof pageQueryParamSchema>
 
 @Controller('/questions/:questionId/answers')
 export class FetchQuestionAnswersController {
-  constructor(private fetchRecentQuestion: FetchQuestionAnswersUseCase) {
-  }
+  constructor(private fetchRecentQuestion: FetchQuestionAnswersUseCase) {}
 
   @Get()
   async handle(
     @Query('page', queryValidationPipe) page: PageQueryParamSchema,
-    @Param('questionId') questionId: string
+    @Param('questionId') questionId: string,
   ) {
     const result = await this.fetchRecentQuestion.execute({
       page,

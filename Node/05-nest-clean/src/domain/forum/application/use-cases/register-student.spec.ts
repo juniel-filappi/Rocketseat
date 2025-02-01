@@ -8,8 +8,7 @@ let sut: RegisterStudentUseCase
 
 describe('Register Student', () => {
   beforeEach(() => {
-    inMemoryStudentsRepository =
-      new InMemoryStudentsRepository()
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
 
     fakeHasher = new FakeHasher()
 

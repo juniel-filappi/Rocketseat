@@ -1,4 +1,3 @@
-
 export abstract class ValueObject<Props> {
   protected props: Props
 
