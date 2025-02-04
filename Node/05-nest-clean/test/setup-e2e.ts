@@ -2,6 +2,7 @@ import { config } from 'dotenv'
 import { randomUUID } from 'node:crypto'
 import { execSync } from 'node:child_process'
 import { PrismaClient } from '@prisma/client'
+import { DomainEvents } from '@/core/events/domain-events'
 
 config({ path: '.env', override: true })
 config({ path: '.env.test', override: true })
@@ -24,6 +25,8 @@ const schemaId = randomUUID()
 
 beforeAll(() => {
   process.env.DATABASE_URL = generateUniqueDatabaseURL(schemaId)
+
+  DomainEvents.shouldRun = false
 
   execSync('yarn prisma migrate deploy --preview-feature', {
     stdio: 'inherit',
