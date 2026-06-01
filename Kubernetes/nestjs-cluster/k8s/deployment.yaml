@@ -16,6 +16,7 @@ spec:
       containers:
         - name: nestjs
           image: junielfilappi/nestjs:v1
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
           resources:
