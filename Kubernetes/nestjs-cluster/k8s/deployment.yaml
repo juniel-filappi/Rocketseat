@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: nestjs-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      api: nestjs
+  template:
+    metadata:
+      labels:
+        api: nestjs
+    spec:
+      containers:
+        - name: nestjs
+          image: junielfilappi/nestjs:v1
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
